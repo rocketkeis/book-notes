@@ -305,15 +305,13 @@ To create culture, repeatedly build and share mental models among all of your ag
 ![systems thinking manifesto](images/stms-manifesto.png)
 
 
-
-## Footnotes
+---
 
 [^systems-1-and-2]: "System 1 operates automatically and quickly, with little or no effort and no sense of voluntary control. System 2 allocates attention to the effortful mental activities that demand it, including complex computations." —From _Thinking, Fast and Slow_ by Daniel Kahneman
 
 [^lego]: Ole Kirk Christiansen, a carpenter, founded Lego in 1932. At the time, he was out of work because of the Depression and decided to build wooden toys in Denmark.
 
 [^brainstorming]: Mullen, B., Johnson, C., & Salas, E. (n.d.). Productivity Loss in Brainstorming Groups: A Meta-Analytic Integration. _Basic and Applied Social Psychology, 3-23_.
-
 
 
 ## Meta
