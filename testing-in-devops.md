@@ -158,42 +158,88 @@ A **staged rollout** is a canary release with a different focus. Instead of crea
 
 ## Testing in DevOps Environments
 
+This section explains some key ways in which platforms have changed in recent years: infrastructure as code, configuration management, containers, and cloud.
+
+**Infrastructure as code** changes this manual process into an automated one. It provides a way to define a server using code - a set of instructions specifying what needs to be installed and how to configure it. Knowledge that was previously held by an individual, and not always understood by others, becomes transparent.
+
+**Configuration management** [refers to the process of systematically handling changes to a system in a way that it maintains integrity over time](https://www.digitalocean.com/community/tutorials/an-introduction-to-configuration-management).
+
+*\[KC: Back in the day, it was just about having a shared repository, and version control.\]*
+
+[Puppet vs Chef vs Ansible vs SaltStack](http://www.intigua.com/blog/puppet-vs.-chef-vs.-ansible-vs.-saltstack)
+
+[Docker - What is a Container](https://www.docker.com/what-container)
 
 
+**Test practices for environments**
+
+[Say "NO!" to a Staging environment (Vimeo)](https://vimeo.com/148161104) by Dave Nolan, 2015
+
+Infrastructure testing tools - Test Kitchen, ServerSpec
+
+**Destructive testing**
+
+Once environments are no longer precious, destructive testing becomes easier. This testing might include failover in an architecture with redundancy, recovery after failure of a service, or backup and restore of a file system. Kill a network interface, stop database processes, flood a web services port, or restart the environment unexpectedly. How does your product cope with events like these? Security testers can perform malicious test activities. Performance testers can explore the resilience of the system under load... These activities can be contained, both from a platform and a people perspective.
+
+First introduced in 2011, the Netflix Simian Army introduced a new lexicon and toolset for
+simulating a variety of infrastructure failures specific to a cloud-based AWS infrastructure... Chaos, Latency, Conformity, Doctor, Janitor, Security, 10-18 Monkeys, and Chaos Gorlla -- [Netflix Simian Army](http://techblog.netflix.com/2011/07/netflix-simian-army.html)
+
+[Netflix, the Simian Army, and the culture of freedom and responsibility](https://devops.com/netflix-the-simian-army-and-the-culture-of-freedom-and-responsibility/)
 
 
+## Industry Examples
+
+## Test Strategy in DevOps
+
+**Risk workshop**
+
+...start a risk workshop with an exercise focused on risk appetite. Gather all the people involved in a release decision in one location, then start the conversation about risk. Ask questions that reveal opinions on current state and future direction. I’ve previously used questions that are adapted from Adam Knight’s [The Risk Questionnaire](https://www.a-sisyphean-task.com/2016/09/the-risk-questionnaire.html):
+* Where do you think [product] currently stands in its typical level of rigour in testing?
+* Where do you think [product] should stand in its typical level of rigour in testing?
+
+[Heuristic Risk-Based Testing](http://www.satisfice.com/articles/hrbt.pdf)
+
+**Rethinking the test pyramid**
+* [A Test Pyramid Heresy](https://www.linkedin.com/pulse/test-pyramid-heresy-john-ferguson-smart) - John Ferguson Smart
+* [An alternative model](http://steveo1967.blogspot.co.nz/2015/10/mewt4-post-1-sigh-its-that-pyramid.html) presented by Richard Bradshaw, 2015
+* [Why I still like pyramids](http://thatsthebuffettable.blogspot.co.nz/2016/03/why-i-still-like-pyramids.html) - Marcel Gehlen
+* [The test pyramid re-imagined as a bug filter](http://infiniteundo.com/post/158179632683/abandoning-the-pyramid-of-testing-in-favor-of-a) - Noah Sussman, 2017
+* The author's DevOps bug filter
+* DevOps Hourglass
+
+**Finding balance in exploration**
+
+[Why exploration has a place in any strategy](http://www.workroom-productions.com/papers/Exploration%20and%20Strategy.pdf) - James Lyndsay
+
+**The Testing Pendulum** Similarly in testing, the pendulum will swing backwards and forwards. When our testing has become too intensive, we switch direction and swing back. When our testing has become ineffectual, we swing back again.
+
+We use indicators to help us determine the position of our pendulum in the testing spectrum. I see three categories of indicator: **bug count, team feedback and management feedback.**
+
+| Too Deep | Too Shallow |
+|-|-|
+| You raise a lot of bugs, not many are fixed | You don’t find many bugs |
+| Zero bugs in production | A lot of bugs in production |
+| In peer review or debrief, your colleagues frequently remove scope from your testing | In peer review or debrief, your colleagues frequently add scope to your testing |
+| Your team or peers question the opportunity cost of the time that you spend testing | Your team or peers question whether you have spent enough time testing |
+| Your team or peers are not performing any testing themselves | Your team or peers are performing testing themselves that you think is unnecessary |
+| Your manager tells you directly that you’re testing too much | Your manager asks you for more detail about what you’re testing |
+
+**Testing vs Tester**
+
+[The Future Of Software Testing Part Two](https://dojo.ministryoftesting.com/lessons/the-future-of-software-testing-part-two) - Seth Eliot, 2011
+
+In a TestOps environment Seth identified two key ways in which the day-to-day work of a tester might change:
+1. The tester moves away from up-front testing and execution of functional test cases. This responsibility shifts towards the developer who “must use every available means to produce code free of low context bugs that can be found by running on his desktop”.
+2. The tester creates tools that can run tests in the production environment, which may look a lot like monitors. “The value test brings is in moving these monitors from heartbeats and simple scenarios to high context user affecting scenarios”.
+
+“Forget about “Ready for test” columns. Everything is continuously being tested and not necessarily by you. Think about how you can integrate your tester mind-set to be heard.” -- [Joining a CD Team the experience report](https://punkmiktests.wordpress.com/2017/04/28/joining-a-cd-team-the-experience-report/), Kim Knup
 
 
+Heuristics for removing a tester
 
 
+**Documenting a strategy**
 
-## Stuff I found interesting, or could come in handy
-
-### Testing in a DevOps Culture
-
-* Test strategy retrospective
-* Agile assessment [How agile is your testing?](http://www.growingagile.co.za/2015/10/assessment-how-agile-is-your-testing/)], and book recommendations if you scored less than five out of ten
-* Two pizza rule for team sizes - Found this interesting because depending on the restaurant and the size, I can easily eat a whole pizza by myself.
-* Blazing a trail - "When I’m blazing a trail I’m building a path to someone new in the organisation..." This isn't limited to DevOps; feels relatable as we're building the local practice and the CoP.
-* Ioana Serban's "Three Little Questions" from [TestOps: Chasing the White Whale (YouTube video)](https://www.youtube.com/watch?v=I6A07ESTc_k)
-* Links to blog posts of applying visualization when testing a product
-* [Pair testing experiment framework](http://katrinatester.blogspot.co.nz/2015/06/a-pairing-experiment-for-sharing.html)
-* Dojos - This just makes me want to google if there are testing dojos as there are coding dojos.
-
-### Testing in Development
-
-* Link to Elisabeth Hendrikson's *[Explore It!](https://pragprog.com/book/ehxta/explore-it)*
-* Link to Jez Humble and David Farley's *[Continuous Delivery: Anatomy of the Deployment Pipeline](http://www.informit.com/articles/article.aspx?p=1621865&seqNum=2)*
-* [Feature toggles](https://martinfowler.com/articles/feature-toggles.html) and content on testing a toggle
-* Bug bash and examples/links of different approaches
-
-### Testing in Production
-
-* Sections on testing monitoring, analytics and logging
-* "There's the well-known example of how Google used A/B testing to determine which shade of blue to use on their toolbar. They tested 41 gradients to learn the colour people preferred, which was seen by some as a trivial attribute to experiment with."
-* "Google are well known for running lengthy beta programs. Gmail, was labelled as beta for five years from 2004 to 2009."
-* [Should Tesla be 'beta testing' autopilot if there is a chance someone might die?](https://www.theguardian.com/technology/2016/jul/06/tesla-autopilot-fatal-crash-public-beta-testing)
-* TIL *passive* validation. Differences were explained by Seth Eliot in [Testing in Production (Vimeo link)](https://vimeo.com/64786696).
-* The terms to describe variations of exposure control such as canary release, staged rollout, dogfooding, and dark launching
-
-### Testing in DevOps Environments
+Visual test strategies
+* http://assurity.co.nz/community/big-thoughts/a-visual-test-strategy/
+* https://technology.fairfaxmedia.co.nz/testing-stuff-a-one-page-test-strategy/
